@@ -8,6 +8,13 @@ class YourProfilePage extends StatefulWidget{
 class _YourProfilePageState extends State<YourProfilePage>{
   @override
   Widget build(BuildContext context) {
-    return new Scaffold();
+    return new Scaffold(
+      appBar: new AppBar(
+        centerTitle: true,
+        title: new Text("Profile",
+        style: TextStyle(color: Colors.black),
+        ),
+      ),
+    );
   }
 }

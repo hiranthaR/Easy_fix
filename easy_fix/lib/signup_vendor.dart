@@ -1,33 +1,16 @@
-import 'package:easy_fix/signup_page.dart';
 import 'package:flutter/material.dart';
-
-// import 'package:famguard/ui/signup.dart';
-void main() {
-  runApp(MyApp());
-  return;
-}
-
-class MyApp extends StatelessWidget {
+import 'package:easy_fix/home.dart';
+class SignupVendorPage extends StatefulWidget{
   @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: new LoginPage(),
-      theme: new ThemeData(primarySwatch: Colors.blue),
-    );
-  }
+  _SignupVendorPageState createState() => _SignupVendorPageState();
 }
 
-class LoginPage extends StatefulWidget {
-  @override
-  State createState() => new LoginPageState();
-}
-
-class LoginPageState extends State<LoginPage> {
+class _SignupVendorPageState extends State<SignupVendorPage>
+{
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
-  @override
-  Widget build(BuildContext context) {
-    final idField = TextFormField(
+    @override
+    Widget build(BuildContext context) {
+     final idField = TextFormField(
       keyboardType: TextInputType.text,
       obscureText: true,
       style: style,
@@ -46,8 +29,20 @@ class LoginPageState extends State<LoginPage> {
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Password",
           border:
+          OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+      );       
+    final confermpasswordField = TextFormField(
+      keyboardType: TextInputType.text,
+      obscureText: true,
+      style: style,
+      decoration: InputDecoration(
+          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          hintText: "Password",
+          border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
+
+
 
     final loginButon = Material(
       elevation: 5.0,
@@ -57,10 +52,11 @@ class LoginPageState extends State<LoginPage> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
-          
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HomePage()));
         },
         child: Text(
-          "Login",
+          "Resgister",
           textAlign: TextAlign.center,
           style:
               style.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
@@ -68,45 +64,6 @@ class LoginPageState extends State<LoginPage> {
       ),
     );
 
-    final signupButon = Material(
-      elevation: 5.0,
-      borderRadius: BorderRadius.circular(30.0),
-      color: Color(0xff01A0C7),
-      child: MaterialButton(
-        minWidth: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => SignupPage()));
-        },
-        child: Text(
-          "Signup",
-          textAlign: TextAlign.center,
-          style:
-              style.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-      ),
-    );
-
-    final vendorBotton = Material(
-      elevation: 1.0,
-      borderRadius: BorderRadius.circular(110.0),
-      color: Color(0xff01A0C7),
-      child: MaterialButton(
-        minWidth: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => SignupPage()));
-        },
-        child: Text(
-          "If You Are A Vendor Signup Here",
-          textAlign: TextAlign.center,
-          style:
-              style.copyWith(color: Colors.white, fontWeight: FontWeight.w400),
-        ),
-      ),
-    );
 
     return Scaffold(
       body: Center(
@@ -127,14 +84,13 @@ class LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(height: 45.0),
                 idField,
-                SizedBox(height: 25.0),
+                SizedBox(height: 40.0),
                 passwordField,
                 SizedBox(height: 35.0),
+                confermpasswordField,
+                SizedBox(height: 15.0,),
                 loginButon,
-                SizedBox(height: 15.0),
-                signupButon,
-                SizedBox(height: 35.0),
-                vendorBotton,
+                
               ],
             ),
           ),

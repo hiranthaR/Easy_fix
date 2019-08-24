@@ -8,6 +8,13 @@ class FreeWorkPage extends StatefulWidget{
 class _FreeWorkPageState extends State<FreeWorkPage>{
   @override
   Widget build(BuildContext context) {
-    return new Scaffold();
+    return new Scaffold(
+      appBar: new AppBar(
+        centerTitle: true,
+        title: new Text("Free Works",
+        style: TextStyle(color: Colors.black),
+        ),
+      ),
+    );
   }
 }

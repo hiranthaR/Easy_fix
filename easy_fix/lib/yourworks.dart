@@ -8,6 +8,13 @@ class WorksPage extends StatefulWidget{
 class _WorksPageState extends State<WorksPage>{
   @override
   Widget build(BuildContext context) {
-    return new Scaffold();
+    return new Scaffold(
+      appBar: new AppBar(
+        centerTitle: true,
+        title: new Text("Your Works",
+        style: TextStyle(color: Colors.black),
+        ),
+      ),
+    );
   }
 }

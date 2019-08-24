@@ -8,6 +8,13 @@ class HelpPage extends StatefulWidget{
 class _HelpPageState extends State<HelpPage>{
   @override
   Widget build(BuildContext context) {
-    return new Scaffold();
+    return new Scaffold(
+      appBar: new AppBar(
+        centerTitle: true,
+        title: new Text("Help",
+        style: TextStyle(color: Colors.black),
+        ),
+      ),
+    );
   }
 }
