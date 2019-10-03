@@ -100,7 +100,7 @@ class LoginPageState extends State<LoginPage> {
               context, MaterialPageRoute(builder: (context) => SignupPage()));
         },
         child: Text(
-          "If You Are A Vendor Signup Here",
+          "Vendor Signup Here",
           textAlign: TextAlign.center,
           style:
               style.copyWith(color: Colors.white, fontWeight: FontWeight.w400),
