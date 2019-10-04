@@ -21,6 +21,17 @@ class _SignupPageState extends State<SignupPage>
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
 
+     final contactNumber = TextFormField(
+      keyboardType: TextInputType.text,
+      obscureText: true,
+      style: style,
+      decoration: InputDecoration(
+          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          hintText: "Contact Number",
+          border:
+              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+    );
+
     final passwordField = TextFormField(
       keyboardType: TextInputType.text,
       obscureText: true,
@@ -37,7 +48,7 @@ class _SignupPageState extends State<SignupPage>
       style: style,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Password",
+          hintText: "Conferm Password",
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
@@ -82,13 +93,15 @@ class _SignupPageState extends State<SignupPage>
                     fit: BoxFit.contain,
                   ),
                 ),
-                SizedBox(height: 45.0),
+                SizedBox(height: 8.0),
                 idField,
-                SizedBox(height: 40.0),
+                SizedBox(height: 8.0),
+                contactNumber,
+                SizedBox(height: 8.0),
                 passwordField,
-                SizedBox(height: 35.0),
+                SizedBox(height: 8.0),
                 confermpasswordField,
-                SizedBox(height: 15.0,),
+                SizedBox(height: 20.0,),
                 loginButon,
                 
               ],

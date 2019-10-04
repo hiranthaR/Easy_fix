@@ -88,26 +88,6 @@ class LoginPageState extends State<LoginPage> {
       ),
     );
 
-    final vendorBotton = Material(
-      elevation: 1.0,
-      borderRadius: BorderRadius.circular(110.0),
-      color: Color(0xff01A0C7),
-      child: MaterialButton(
-        minWidth: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => SignupPage()));
-        },
-        child: Text(
-          "Vendor Signup Here",
-          textAlign: TextAlign.center,
-          style:
-              style.copyWith(color: Colors.white, fontWeight: FontWeight.w400),
-        ),
-      ),
-    );
-
     return Scaffold(
       body: Center(
         child: Container(
@@ -133,8 +113,6 @@ class LoginPageState extends State<LoginPage> {
                 loginButon,
                 SizedBox(height: 15.0),
                 signupButon,
-                SizedBox(height: 35.0),
-                vendorBotton,
               ],
             ),
           ),
