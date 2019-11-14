@@ -1,5 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:easy_fix/signup_page.dart';
+
 
 
 class LoginPage extends StatefulWidget {
@@ -9,12 +10,16 @@ class LoginPage extends StatefulWidget {
 
 class LoginPageState extends State<LoginPage> {
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+    TextEditingController _editingController = TextEditingController();
+    bool _isSigningIn = false;
+
   @override
   Widget build(BuildContext context) {
     final idField = TextFormField(
       keyboardType: TextInputType.text,
       obscureText: true,
       style: style,
+      controller: _editingController,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "ID",
@@ -26,6 +31,7 @@ class LoginPageState extends State<LoginPage> {
       keyboardType: TextInputType.text,
       obscureText: true,
       style: style,
+      controller: _editingController,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Password",
@@ -42,6 +48,7 @@ class LoginPageState extends State<LoginPage> {
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
           
+          
         },
         child: Text(
           "Login",
@@ -52,26 +59,7 @@ class LoginPageState extends State<LoginPage> {
       ),
     );
 
-    final signupButon = Material(
-      elevation: 5.0,
-      borderRadius: BorderRadius.circular(30.0),
-      color: Color(0xff01A0C7),
-      child: MaterialButton(
-        minWidth: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => SignupPage()));
-        },
-        child: Text(
-          "Signup",
-          textAlign: TextAlign.center,
-          style:
-              style.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-      ),
-    );
-
+   
     return Scaffold(
       body: Center(
         child: Container(
@@ -95,8 +83,7 @@ class LoginPageState extends State<LoginPage> {
                 passwordField,
                 SizedBox(height: 35.0),
                 loginButon,
-                SizedBox(height: 15.0),
-                signupButon,
+              
               ],
             ),
           ),

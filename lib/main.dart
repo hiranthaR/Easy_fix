@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_fix/signup_page.dart';
 import 'package:flutter/material.dart';
 
@@ -24,12 +25,15 @@ class FirstlogPage extends StatefulWidget{
 
 class _FirstlogPageState extends State<FirstlogPage>{
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+  TextEditingController _editingController = TextEditingController();
+  bool _isSigningIn = false;
+
   @override
   Widget build(BuildContext context) {
     final phonefeild = TextFormField(
       keyboardType: TextInputType.number,
-      obscureText: true,
       style: style,
+      controller: _editingController,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0 , 15.0),
         hintText: "Enter Your Mobile Number",
@@ -44,8 +48,25 @@ class _FirstlogPageState extends State<FirstlogPage>{
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
-          Navigator.push(
+          setState(() {
+            _isSigningIn = true;
+          });
+          Firestore.instance.collection("users").document(_editingController.text).setData({
+            "phone":_editingController.text
+          }).then((_){
+            setState(() {
+              _isSigningIn = false;
+            });
+            print("completed");
+              Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => SignupPage()));
+        
+          }).catchError((err){
+            setState(() {
+              _isSigningIn = false;
+            });
+            print(err);
+          });
         },
         child: Text(
           "Next",
@@ -65,17 +86,18 @@ class _FirstlogPageState extends State<FirstlogPage>{
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 100,
-                child: Image.asset(
+                _isSigningIn ? LinearProgressIndicator() : SizedBox.shrink(),
+                Spacer(),
+                Image.asset(
                   "assets/logo.jpg",
                   fit: BoxFit.contain,
                   ),
-                  ),
+                  
                 SizedBox(height:20.0),
                 phonefeild,
                 SizedBox(height: 40.0,),
                 next,
-
+                Spacer()
               ],
             ),
           ),
