@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_fix/home.dart';
-import 'package:flutter/src/rendering/box.dart';
 class SignupPage extends StatefulWidget{
+  String phoneNumber;
+  SignupPage({this.phoneNumber});
   @override
   _SignupPageState createState() => _SignupPageState();
 }
@@ -19,7 +20,7 @@ class _SignupPageState extends State<SignupPage>
 
     @override
     Widget build(BuildContext context) {
-     final idField = TextFormField(
+     final idField = TextField(
       keyboardType: TextInputType.text,
       obscureText: false,
       style: style,
@@ -31,7 +32,7 @@ class _SignupPageState extends State<SignupPage>
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
 
-     final contactNumber = TextFormField(
+     final contactNumber = TextField(
       keyboardType: TextInputType.text,
       obscureText: false,
       style: style,
@@ -43,7 +44,7 @@ class _SignupPageState extends State<SignupPage>
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
 
-    final passwordField = TextFormField(
+    final passwordField = TextField(
       keyboardType: TextInputType.text,
       obscureText: true,
       style: style,
@@ -54,7 +55,7 @@ class _SignupPageState extends State<SignupPage>
           border:
           OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
       );       
-    final confermpasswordField = TextFormField(
+    final confermpasswordField = TextField(
       keyboardType: TextInputType.text,
       obscureText: true,
       style: style,
@@ -80,7 +81,7 @@ class _SignupPageState extends State<SignupPage>
             _isSigningIn = true;
 
           });
-          Firestore.instance.collection("users").document(_editingController.text ).setData({
+          Firestore.instance.collection("users").document(widget.phoneNumber).setData({
             "id":_editingController1.text,
             "contactN":_editingController2.text,
             "pass":_editingController3.text,
