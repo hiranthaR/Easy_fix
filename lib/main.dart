@@ -59,7 +59,7 @@ class _FirstlogPageState extends State<FirstlogPage>{
             });
             print("completed");
               Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => SignupPage()));
+              context, MaterialPageRoute(builder: (context) => SignupPage(phoneNumber:_editingController.text)));
         
           }).catchError((err){
             setState(() {

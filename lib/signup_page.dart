@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:easy_fix/home.dart';
 import 'package:flutter/src/rendering/box.dart';
 class SignupPage extends StatefulWidget{
+  //here
+  String phoneNumber;
+  SignupPage({this.phoneNumber});
   @override
   _SignupPageState createState() => _SignupPageState();
 }
@@ -80,7 +83,8 @@ class _SignupPageState extends State<SignupPage>
             _isSigningIn = true;
 
           });
-          Firestore.instance.collection("users").document(_editingController.text ).setData({
+          //here
+          Firestore.instance.collection("users").document(widget.phoneNumber).setData({
             "id":_editingController1.text,
             "contactN":_editingController2.text,
             "pass":_editingController3.text,
