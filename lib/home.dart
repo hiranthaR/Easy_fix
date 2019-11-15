@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:easy_fix/logfirst.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_fix/freeworks.dart';
 import 'package:easy_fix/help.dart';
@@ -142,6 +142,14 @@ class _HomePageState extends State<HomePage> {
                     MaterialPageRoute(builder: (context) => SettingPage()));
               },
             ),
+            ListTile(
+              title: Text("Sign out",
+              textAlign: TextAlign.end),
+              onTap:(){
+                Navigator.push(context, 
+                  MaterialPageRoute(builder: (context) => LoginPage() ));
+              }
+               ,)
           ],
         ),
       ),

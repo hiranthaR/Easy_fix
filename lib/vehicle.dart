@@ -13,6 +13,20 @@ class _VehiclePageState extends State<VehiclePage>{
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
   TextEditingController _editingController = TextEditingController();
   bool _isSigningIn = false;
+  bool _isChecked1 = false;
+  bool _isChecked2 = false;
+
+  void onChanged1(bool value){
+    setState(() {
+      _isChecked1 = value;
+    });
+  }
+
+  void onChanged2(bool value){
+    setState(() {
+      _isChecked2 = value;
+    });
+  }
   @override
   
   Widget build(BuildContext context) {
@@ -55,6 +69,13 @@ class _VehiclePageState extends State<VehiclePage>{
       ),
     );
     return new Scaffold(
+      appBar: new AppBar(
+        centerTitle: true,
+        title: new Text("Vehicle Type",
+        style: TextStyle(color: Colors.black
+        )
+        ),
+      ),
       body:Center(
           child: Container(
             color: Colors.white,
@@ -69,9 +90,24 @@ class _VehiclePageState extends State<VehiclePage>{
                   Image.asset(
                       "assets/logo.jpg",
                       fit: BoxFit.contain,
+                      
                     ),
-                  SizedBox(height: 8.0),
-                  SizedBox(height: 10.0,),
+                  SizedBox(height: 100.0),
+                  new Row(
+                    children: <Widget>[
+                  
+                      new Text("hybrid Vehicle",
+                      textAlign: TextAlign.center),
+                      new Checkbox(value: _isChecked1, activeColor: Colors.red, onChanged: (bool value){onChanged1(value);},),
+                    ],
+                  ),
+                  new Row(
+                    children: <Widget>[
+                      new Text("Normal Vehicle"),
+                      new Checkbox(value: _isChecked2, activeColor: Colors.red, onChanged: (bool value){onChanged2(value);},),
+                    ],
+                  ),
+                  SizedBox(height: 100.0,),
                   nextButon,
                   Spacer()
                   
