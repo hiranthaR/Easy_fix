@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_fix/vehicle.dart';
 import 'package:flutter/material.dart';
-import 'package:easy_fix/home.dart';
 class SignupPage extends StatefulWidget{
   String phoneNumber;
   SignupPage({this.phoneNumber});
@@ -11,11 +11,11 @@ class SignupPage extends StatefulWidget{
 class _SignupPageState extends State<SignupPage>
 {
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
-  TextEditingController _editingController = TextEditingController();
+
   TextEditingController _editingController1 = TextEditingController();
   TextEditingController _editingController2 = TextEditingController();
   TextEditingController _editingController3 = TextEditingController();
-  TextEditingController _editingController4 = TextEditingController();
+
   bool _isSigningIn = false;
 
     @override
@@ -32,23 +32,13 @@ class _SignupPageState extends State<SignupPage>
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
 
-     final contactNumber = TextField(
-      keyboardType: TextInputType.text,
-      obscureText: false,
-      style: style,
-      controller: _editingController2,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Contact Number",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
-    );
+    
 
     final passwordField = TextField(
       keyboardType: TextInputType.text,
       obscureText: true,
       style: style,
-      controller: _editingController3,
+      controller: _editingController2,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Password",
@@ -59,7 +49,7 @@ class _SignupPageState extends State<SignupPage>
       keyboardType: TextInputType.text,
       obscureText: true,
       style: style,
-      controller: _editingController4,
+      controller: _editingController3,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Conferm Password",
@@ -69,7 +59,7 @@ class _SignupPageState extends State<SignupPage>
 
 
 
-    final loginButon = Material(
+    final nextButon = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
       color: Color(0xff01A0C7),
@@ -83,16 +73,15 @@ class _SignupPageState extends State<SignupPage>
           });
           Firestore.instance.collection("users").document(widget.phoneNumber).setData({
             "id":_editingController1.text,
-            "contactN":_editingController2.text,
-            "pass":_editingController3.text,
-            "conpass":_editingController4.text
+            "pass":_editingController2.text,
+            "conpass":_editingController3.text
           }).then((_){
             setState(() {
               _isSigningIn = false;
             });
             print("complite");
             Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) =>HomePage()));
+              context, MaterialPageRoute(builder: (context) =>VehiclePage()));
           }).catchError((err){
             setState(() {
               _isSigningIn = false;
@@ -102,7 +91,7 @@ class _SignupPageState extends State<SignupPage>
 
         },
         child: Text(
-          "Resgister",
+          "Next",
           textAlign: TextAlign.center,
           style:
               style.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
@@ -130,13 +119,11 @@ class _SignupPageState extends State<SignupPage>
                   SizedBox(height: 8.0),
                   idField,
                   SizedBox(height: 8.0),
-                  contactNumber,
-                  SizedBox(height: 8.0),
                   passwordField,
                   SizedBox(height: 8.0),
                   confermpasswordField,
-                  SizedBox(height: 20.0,),
-                  loginButon,
+                  SizedBox(height: 10.0,),
+                  nextButon,
                   Spacer()
                   
                 ],
