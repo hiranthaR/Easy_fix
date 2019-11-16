@@ -8,6 +8,9 @@ import 'package:easy_fix/setting.dart';
 import 'package:easy_fix/yourworks.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:latlong/latlong.dart';
+import 'package:geocoder/geocoder.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -63,6 +66,9 @@ class _HomePageState extends State<HomePage> {
       print(e);
     }
   }
+   Widget loadMap(){
+
+   }
 
   GlobalKey<ScaffoldState> _sacaffoldkey = new GlobalKey();
   @override
@@ -143,6 +149,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
+              
               title: Text("Sign out",
               textAlign: TextAlign.end),
               onTap:(){
