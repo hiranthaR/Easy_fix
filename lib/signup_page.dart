@@ -71,6 +71,7 @@ class _SignupPageState extends State<SignupPage>
             _isSigningIn = true;
 
           });
+
           Firestore.instance.collection("users").document(widget.phoneNumber).setData({
             "id":_editingController1.text,
             "pass":_editingController2.text,
